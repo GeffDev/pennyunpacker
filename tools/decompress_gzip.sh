@@ -3,7 +3,7 @@
 function decompress_if_gzipped() {
     local file="$1"
     local mime_type=$(file -b --mime-type "$file")
-    
+
     if [ "$mime_type" == "application/gzip" ]; then
         zcat "$file" > "${file%.gz}.pvr"
         echo "Decompressed $file to ${file%.gz}.pvr"
