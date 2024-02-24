@@ -139,15 +139,20 @@ i32 extractPacks() {
         strcat(full_file_path, path);
         FILE *unpacked_file = fopen(full_file_path, "wb+");
 
-        // TODO: some files are under 48 bytes? which is the size of the file header?
-        if (remove_header && size > 0x30) {
+        if (remove_header) {
             offset += 0x30;
-            size -= 0x30;
         }
 
         fseek(data_packs[pack], offset, SEEK_SET);
 
-        u8 *file_buffer = malloc(size);
+        u8 *file_buffer;
+        if (remove_header) {
+            file_buffer = malloc(size);
+        } else {
+            // size doesn't account for file header
+            file_buffer = malloc(size + 0x30);
+        }
+
         if (file_buffer == NULL) {
             printLog("ERROR: failed to allocate file buffer");
             break;

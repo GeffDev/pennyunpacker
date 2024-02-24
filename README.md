@@ -3,3 +3,6 @@ Does the bare minimum of unpacking all data packs based off of `Pack.db` (conver
 
 ## Instructions
 Compile, copy `files.txt` and the `Pack` folder from game files next to the executable.
+
+## Tools
+`decompress_gzip.sh` - Run from inside `Pack/` to decompress all gzipped files (PVR texture files).
