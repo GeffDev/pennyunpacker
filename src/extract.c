@@ -3,6 +3,8 @@
 
 FILE *data_packs[DATA_FILE_NUM] = {0};
 
+bool remove_header = true;
+
 i32 extractPacks() {
     const u8 *file_name_base = "Pack/Data";
 
@@ -136,6 +138,12 @@ i32 extractPacks() {
 
         strcat(full_file_path, path);
         FILE *unpacked_file = fopen(full_file_path, "wb+");
+
+        // TODO: some files are under 48 bytes? which is the size of the file header?
+        if (remove_header && size > 0x30) {
+            offset += 0x30;
+            size -= 0x30;
+        }
 
         fseek(data_packs[pack], offset, SEEK_SET);
 
