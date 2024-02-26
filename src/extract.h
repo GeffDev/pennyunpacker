@@ -19,5 +19,6 @@ extern FILE *data_packs[DATA_FILE_NUM];
 extern bool remove_header;
 
 i32 extractPacks();
+i32 packFiles();
 
 #endif

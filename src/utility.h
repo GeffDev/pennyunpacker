@@ -1,6 +1,7 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
+#include <ctype.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -26,6 +27,7 @@ typedef int64_t i64;
 #define FROM_FIXED(x) ((x) >> 16)
 
 #ifdef __linux__
+#include <dirent.h>
 #include <sys/stat.h>
 #define mkdir(dir, mode) mkdir(dir, mode)
 #elif defined _WIN32
