@@ -149,7 +149,6 @@ i32 extractPacks() {
 
                 if (strcmp(path_comp, path) == 0) {
                     file_name_found = true;
-                    printLog("wow");
                     fseek(file_names, 0, SEEK_SET);
                     break;
                 } else {
